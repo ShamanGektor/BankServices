@@ -8,6 +8,7 @@ namespace BankServices
     {
         private static ListOfContract instance;
 
+        private List<Contract> list = new List<Contract>();
         public static ListOfContract getInstance()
         {
             if (instance == null)
@@ -15,7 +16,6 @@ namespace BankServices
             return instance;
         }
 
-        private List<Contract> list = new List<Contract>();
 
         public void Add(Contract contract)
         {
