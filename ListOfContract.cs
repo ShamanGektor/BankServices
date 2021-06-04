@@ -50,6 +50,12 @@ namespace BankServices
         public void EditContract(int ID, string filename, string type, string status)
         {
             Contract i = list.Find(x => x.getID() == ID);
+            if (i==null)
+            {
+                Console.WriteLine("Error: Контракта с таким номером не существует");
+                Console.ReadKey();
+                return;
+            }
             i.setFileName(filename);
             i.setType(type);
             i.setStatus(status);

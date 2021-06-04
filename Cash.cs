@@ -16,7 +16,7 @@ namespace BankServices
             list[1].quantity = 1000;
         }
 
-        public void Exchange(CurrencyQuantity take, CurrencyQuantity give)
+        public bool Exchange(CurrencyQuantity take, CurrencyQuantity give)
         {
             for (int i = 0; i < 2; i++)
             {
@@ -26,12 +26,18 @@ namespace BankServices
                     {
                         if (list[j].e == give.e)
                         {
-                            list[i].quantity += take.quantity;
-                            list[j].quantity -= take.quantity * 1.2;
+                            if (list[j].quantity >= take.quantity * 1.2)
+                            {
+                                list[i].quantity += take.quantity;
+                                list[j].quantity -= take.quantity * 1.2;
+                                return true;
+                            }
+                            else return false;
                         }
                     }
                 }
             }
+            return false;
         }
 
         public bool GiveMoney(CurrencyQuantity v)

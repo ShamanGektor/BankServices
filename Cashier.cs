@@ -12,10 +12,15 @@ namespace BankServices
         {
             Credit newcredit = new Credit();
             Console.WriteLine("Введите данные кредита клиента: ");
+            Console.WriteLine("Номер ");
             newcredit.setNumber(Convert.ToInt32(Console.ReadLine()));
+            Console.WriteLine("Тело кредита ");
             newcredit.setBody(Convert.ToDouble(Console.ReadLine()));
+            Console.WriteLine("Процент ");
             newcredit.setPercent(Convert.ToDouble(Console.ReadLine()));
+            Console.WriteLine("Дату открытия ");
             newcredit.setData(Convert.ToDateTime(Console.ReadLine()));
+            Console.WriteLine("Период ");
             newcredit.setPeriod(Convert.ToInt32(Console.ReadLine()));
             ClientProfile.getInstance().Add(newcredit);
         }
@@ -23,6 +28,12 @@ namespace BankServices
         public void TakeMoney(int number, double body)
         {
             Deposit contribution = (Deposit)ClientProfile.getInstance().FindContribution(number);
+            if (contribution == null)
+            {
+                Console.WriteLine("Error: Вклада с таким номером не существует");
+                Console.ReadKey();
+                return;
+            }
             CurrencyQuantity money;
             money.e = contribution.getCurrencyType();
             money.quantity = body;
@@ -33,6 +44,12 @@ namespace BankServices
         public void GiveMoney(int number, double body)
         {
             Contribution contribution = ClientProfile.getInstance().FindContribution(number);
+            if (contribution == null)
+            {
+                Console.WriteLine("Error: Вклада с таким номером не существует");
+                Console.ReadKey();
+                return;
+            }
             if (contribution.getBody() >= body)
             {
                 CurrencyQuantity w;
@@ -78,7 +95,16 @@ namespace BankServices
                 money1.e = type.Dollar;
             }
             money1.quantity = 0;
-            cash.Exchange(money, money1);
+            if (cash.Exchange(money, money1))
+            { 
+                Console.WriteLine("Успешно");
+                Console.ReadKey();
+            }
+            else
+            {
+                Console.WriteLine("Error: недостаточно средств в кассе");
+                Console.ReadKey();
+            }
         }
     }
 }
