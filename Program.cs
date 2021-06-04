@@ -15,6 +15,8 @@ namespace BankServices
 
     class Program
     {
+        public static Cashier cashier = new Cashier();
+
         public static Client profile = new Client();
         static void Main(string[] args)
         {
@@ -26,6 +28,10 @@ namespace BankServices
                 if (!Convert.ToBoolean(symbol.CompareTo('1')))
                 {
                     work.ClientWork();
+                }
+                else
+                {
+                    work.CashierWork();
                 }
             }
         }

@@ -51,5 +51,30 @@ namespace BankServices
 
             }
         }
+        public void CashierWork()
+        {
+            char symbol;
+            while (true)
+            {
+                Console.Clear();
+                Console.WriteLine("1-Выдать кредит");
+                Console.WriteLine("2-Обменять валюту");
+                Console.WriteLine("3-Выход из системы");
+                symbol = Console.ReadKey().KeyChar;
+                Console.Clear();
+                switch (symbol)
+                {
+                    case '1':
+                        Program.cashier.GiveCredit();
+                        break;
+                    case '2':
+                        Program.cashier.Exchenged();
+                        break;
+                    case '3':
+                        return;
+                        break;
+                }
+            }
+        }
     }
 }
