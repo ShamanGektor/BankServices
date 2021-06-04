@@ -2,6 +2,17 @@
 
 namespace BankServices
 {
+    public enum type
+    {
+        Rubbles,
+        Dollar
+    }
+    public struct CurrencyQuantity
+    {
+        public type e;
+        public double quantity;
+    }
+
     class Program
     {
         public static Client profile = new Client();
