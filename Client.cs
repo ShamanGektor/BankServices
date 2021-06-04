@@ -8,7 +8,13 @@ namespace BankServices
     {
         public void CreateContract()
         {
-
+            Console.Clear();
+            Console.WriteLine("Введите данные договора: ");
+            Contract newcontract = new Contract();
+            newcontract.setID(Convert.ToInt32(Console.ReadLine()));
+            newcontract.setFileName(Console.ReadLine());
+            newcontract.setType(Console.ReadLine());
+            ListOfContract.getInstance().Add(newcontract);
         }
 
         public void GetFromDeposit()
