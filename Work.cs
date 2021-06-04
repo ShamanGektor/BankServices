@@ -9,6 +9,7 @@ namespace BankServices
         public void ClientWork()
         {
 
+
             char symbol;
             while (true)
             {

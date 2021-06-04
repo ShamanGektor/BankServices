@@ -4,7 +4,6 @@ namespace BankServices
 {
     class Program
     {
-
         public static Client profile = new Client();
         static void Main(string[] args)
         {
