@@ -18,5 +18,6 @@ namespace BankServices
                     work.ClientWork();
                 }
             }
+        }
     }
 }
