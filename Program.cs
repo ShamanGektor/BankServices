@@ -5,6 +5,8 @@ namespace BankServices
     class Program
     {
         public static Client profile = new Client();
+
+        public static Manager person = new Manager();
         static void Main(string[] args)
         {
             Work work = new Work();
@@ -15,6 +17,10 @@ namespace BankServices
                 if (!Convert.ToBoolean(symbol.CompareTo('1')))
                 {
                     work.ClientWork();
+                }
+                else
+                {
+                    work.ManagerWork();
                 }
             }
         }
